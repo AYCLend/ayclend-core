@@ -1,0 +1,38 @@
+[toolchain]
+anchor_version = "0.30.1"
+solana_version = "1.18.11"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+ayclend = "Mfi1111111111111111111111111111111111111111"
+
+[programs.mainnet]
+ayclend = "B8MRNdMjeRE19EbpUL9BdAmFDSvxmfyBBcnfdEKB17cK"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "https://devnet.rpcpool.com/"
+#wallet = "~/.config/solana/id.json"
+wallet = "dev.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 10000
+upgradeable = false
+
+[test.validator]
+bind_address = "0.0.0.0"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
+
+[[test.validator.account]]
+address = "8FRFC6MoGGkMFQwngccyu69VnYbzykGeez7ignHVAFSN"
+filename = "tests/fixtures/localnet_usdc.json"
